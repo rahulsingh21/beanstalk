@@ -19,111 +19,285 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 welcome = """
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <!--
-    Copyright 2012 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login System</title>
+    <style>
+    * {
+    box-sizing: border-box;
+}
 
-    Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI';
+    font-size: 25px;
+}
 
-        http://aws.Amazon/apache2.0/
+.form input {
+    min-width: 400px;
+    display: block;
+    margin: 20px;
+    padding: 15px 20px;
+    background-color: #ece7e7;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    box-shadow: 15px 15px 25px #a8a8a8;
+    transition: box-shadow 0.5s;
+}
 
-    or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-  -->
-  <b>This is by Rahul</b>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Welcome</title>
-  <style>
-  body {
-    color: #ffffff;
-    background-color: #E0E0E0;
-    font-family: Arial, sans-serif;
-    font-size:14px;
-    -moz-transition-property: text-shadow;
-    -moz-transition-duration: 4s;
-    -webkit-transition-property: text-shadow;
-    -webkit-transition-duration: 4s;
-    text-shadow: none;
-  }
-  body.blurry {
-    -moz-transition-property: text-shadow;
-    -moz-transition-duration: 4s;
-    -webkit-transition-property: text-shadow;
-    -webkit-transition-duration: 4s;
-    text-shadow: #fff 0px 0px 25px;
-  }
-  a {
-    color: #0188cc;
-  }
-  .textColumn, .linksColumn {
-    padding: 2em;
-  }
-  .textColumn {
+.form input:focus {
+    box-shadow: 5px 5px 15px #a8a8a8;
+}
+
+.form .btn {
+    margin: auto;
+    padding: 10px 35px;
+    background-color: #f1a566;
+    color: #fff;
+    border: none;
+    font-size: 22px;
+    border-radius: 10px;
+    box-shadow: 15px 15px 20px #a8a8a8;
+    transition: box-shadow 0.5s;
+    outline: none;
+}
+
+.form .btn:hover {
+    box-shadow: 5px 5px 15px #aaa;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh;
+    width: 50vw;
     position: absolute;
-    top: 0px;
-    right: 50%;
     bottom: 0px;
-    left: 0px;
+    font-size: 35px;
+}
 
-    text-align: right;
-    padding-top: 11em;
-    background-color: #1BA86D;
-    background-image: -moz-radial-gradient(left top, circle, #6AF9BD 0%, #00B386 60%);
-    background-image: -webkit-gradient(radial, 0 0, 1, 0 0, 500, from(#6AF9BD), to(#00B386));
-  }
-  .textColumn p {
-    width: 75%;
-    float:right;
-  }
-  .linksColumn {
+.left-section .form {
+    float: left;
+    margin: 35vh auto;
+}
+
+.right-section .form {
+    float: right;
+    margin: 30vh auto;
+    right: 0;
+}
+
+.cover .switch-btn {
     position: absolute;
-    top:0px;
-    right: 0px;
-    bottom: 0px;
-    left: 50%;
+    bottom: 0;
+    font-size: 25px;
+    margin: 40vh auto;
+    padding: 10px 55px;
+    background-color: #f1a566;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 15px 15px 25px #a8a8a8;
+    transition: box-shadow 0.5s;
+    outline: none;
+}
 
-    background-color: #E0E0E0;
-  }
+.cover .switch-btn:hover {
+    box-shadow: 5px 5px 15px #aaa;
+}
 
-  h1 {
-    font-size: 500%;
-    font-weight: normal;
-    margin-bottom: 0em;
-  }
-  h2 {
-    font-size: 200%;
-    font-weight: normal;
-    margin-bottom: 0em;
-  }
-  ul {
-    padding-left: 1em;
-    margin: 0px;
-  }
-  li {
-    margin: 1em 0em;
-  }
-  </style>
+.left-section .cover {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.left-section .cover img {
+    height: 100vh;
+    width: 50vw;
+}
+
+.left-section .cover h1 {
+    position: absolute;
+    bottom: 0;
+    margin: 60vh auto;
+    color: #fff;
+    font-size: 50px;
+}
+
+.left-section .cover h3 {
+    position: absolute;
+    bottom: 0;
+    margin: 50vh auto;
+    color: #fff;
+    font-size: 35px;
+}
+
+.left-section .cover-hide {
+    visibility: hidden;
+}
+
+.left-section .form-hide {
+    visibility: hidden;
+}
+
+.right-section .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.right-section .cover img {
+    height: 100vh;
+    width: 50vw;
+}
+
+.right-section .cover h1 {
+    position: absolute;
+    bottom: 0;
+    margin: 60vh auto;
+    font-size: 50px;
+    color: #fff;
+}
+
+.right-section .cover h3 {
+    position: absolute;
+    bottom: 0;
+    margin: 50vh auto;
+    color: #fff;
+    font-size: 35px;
+}
+
+.right-section .cover-hide {
+    visibility: hidden;
+}
+
+.right-section .form-hide {
+    visibility: hidden;
+}
+
+.fade-in-element {
+    animation-name: fade-in-element;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-in-element {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+    </style>
 </head>
-<body id="sample">
-  <div class="textColumn">
-    <h1>Congratulations</h1>
-    <p>Your first AWS Elastic Beanstalk Python Application is now running on your own dedicated environment in the AWS Cloud</p>
-    <p>This environment is launched with Elastic Beanstalk Python Platform</p>
-  </div>
-  
-  <div class="linksColumn"> 
-    <h2>What's Next?</h2>
-    <ul>
-    <li><a href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/dg/">AWS Elastic Beanstalk overview</a></li>
-    <li><a href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/dg/index.html?concepts.html">AWS Elastic Beanstalk concepts</a></li>
-    <li><a href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/dg/create_deploy_Python_django.html">Deploy a Django Application to AWS Elastic Beanstalk</a></li>
-    <li><a href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/dg/create_deploy_Python_flask.html">Deploy a Flask Application to AWS Elastic Beanstalk</a></li>
-    <li><a href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/dg/create_deploy_Python_custom_container.html">Customizing and Configuring a Python Container</a></li>
-    <li><a href="http://docs.amazonwebservices.com/elasticbeanstalk/latest/dg/using-features.loggingS3.title.html">Working with Logs</a></li>
+<script>
 
-    </ul>
-  </div>
+
+function switchSignup() {
+    right_form.classList.add("fade-in-element");
+    left_cover.classList.add("fade-in-element");
+
+    left_form.classList.add("form-hide");
+    left_cover.classList.remove("cover-hide");
+    right_form.classList.remove("form-hide");
+    right_cover.classList.add("cover-hide");
+}
+
+function login() {
+    var left_cover = document.getElementById("left-cover");
+    var left_form = document.getElementById("left-form");
+
+    var right_cover = document.getElementById("right-cover");
+    var right_form = document.getElementById("right-form");
+
+    var login_username = document.getElementById("login-username");
+    var login_password = document.getElementById("login-password");
+
+    var incorrect_login_left = document.getElementById("incorrect-login-left-cover");
+    var incorrect_login_right = document.getElementById("incorrect-login-right-form");
+
+    let loginMap = new Map();
+
+    loginMap.set('Rahul', 'Singh');
+    loginMap.set('Arpana', 'a@123');
+    var username = login_username.value
+    var password = login_password.value
+    var value = loginMap.get(username)
+    
+    if(value == undefined || value != password) {
+        incorrect_login_right.classList.add("fade-in-element")
+        incorrect_login_left.classList.add("fade-in-element")
+        
+        left_form.classList.add("form-hide");
+        incorrect_login_left.classList.remove("cover-hide")
+        incorrect_login_right.classList.remove("form-hide")
+        right_cover.classList.add("cover-hide");
+    }
+    else {
+        document.getElementById("loggedInUser").innerHTML = username
+        right_form.classList.add("fade-in-element");
+        left_cover.classList.add("fade-in-element");
+
+        left_form.classList.add("form-hide");
+        left_cover.classList.remove("cover-hide");
+        right_form.classList.remove("form-hide");
+        right_cover.classList.add("cover-hide");
+    }
+}
+</script>
+<body>
+    
+    <section class="left-section">
+        <div id="left-cover" class="cover cover-hide">
+            <img src="img/cover.png" alt="">
+            <h1>Welcome !</h1>
+            <h3 id="loggedInUser"></h3>
+            <button type="button" class="switch-btn" onclick="location.reload()">Logout</button>
+        </div>
+        <div id="left-form" class="form fade-in-element">
+            <h1>Login</h1>
+            <form action="" method="post">
+                <input type="text" name="user-name" class="input-box" placeholder="User Name" id="login-username">
+                <input type="password" name="user-pass" class="input-box" placeholder="Password" id="login-password">
+                <input type="button" name="login-btn" class="btn" onclick="login()" value="Login">
+            </form>
+        </div>
+    </section>
+
+    <section class="right-section">
+        <div id="right-cover" class="cover fade-in-element">
+            <img src="img/cover.png" alt="">
+        </div>
+        <div id="right-form" class="form form-hide">
+            <form action="" method="post">
+            </form>
+        </div>
+    </section>
+
+    <section class="left-section">
+        <div id="incorrect-login-left-cover" class="cover cover-hide">
+            <img src="img/cover.png" alt="">
+            <h3>Incorrect UserName or Password</h3>
+            <button type="button" class="switch-btn" onclick="location.reload()">Retry Login</button>
+        </div>
+    </section>
+
+    <section class="right-section">
+        <div id="incorrect-login-right-form" class="form form-hide">
+        </div>
+    </section>
+
 </body>
 </html>
 """
